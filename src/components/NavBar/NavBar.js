@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { FaTimes, FaBars } from 'react-icons/fa';
 
 function NavBar() {
     const [click, setClick] = useState(false)
@@ -14,7 +15,9 @@ function NavBar() {
                         The John Maras Project
                     </Link>
                     <div className='menu-icon' onClick={handleClick}>
-                        <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+                        <div>
+                            {click ? <FaTimes /> : <FaBars />}
+                        </div>
                     </div>
                 </div>
             </nav>
