@@ -1,13 +1,28 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaTimes, FaBars } from 'react-icons/fa';
+import { Button } from '../Button/Button';
+import './NavBar.css';
 
 function NavBar() {
-    const [click, setClick] = useState(false)
+    const [click, setClick] = useState(false);
+    const [button, setButton] = useState(true);
 
     //sets state to true for the hamburger menu to toggle
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
+
+    //displays depending on screen size
+    const showButton = () => {
+        if (window.innerWidth <= 960) {
+            setButton(false)
+        } else {
+            setButton(true);
+        }
+    }
+
+    window.addEventListener('resize', showButton);
+
     return (
         <>
             <nav className="navbar">
@@ -36,6 +51,7 @@ function NavBar() {
                                 </Link>
                             </li>
                         </ul>
+                        {button && <Button buttonStyle='btn--outline'>Resume Download</Button>}
                     </div>
                 </div>
             </nav>
