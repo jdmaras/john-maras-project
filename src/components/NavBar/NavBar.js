@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaTimes, FaBars } from 'react-icons/fa';
 import { Button } from '../Button/Button';
+import HamburgerMenu from './HamburgerMenu';
 import './NavBar.css';
 
 function NavBar() {
@@ -31,10 +32,10 @@ function NavBar() {
                         The John Maras Project
                     </Link>
                     <div className='menu-icon' onClick={handleClick}>
-                        <div>
+                        {!button && <div>
                             {click ? <FaTimes /> : <FaBars />}
-                        </div>
-                        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                        </div>}
+                        {button && <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                             <li className='nav-item'>
                                 <Link to='/' className='nav-links' onClick={closeMobileMenu}>
                                     Home
@@ -50,7 +51,7 @@ function NavBar() {
                                     Projects
                                 </Link>
                             </li>
-                        </ul>
+                        </ul>}
                         {button && <Button buttonStyle='btn--outline'>Resume Download</Button>}
                     </div>
                 </div>
